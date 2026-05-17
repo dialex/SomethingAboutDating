@@ -1,6 +1,7 @@
 import { sections } from "./workflow.js";
 import { setupInstallBanner } from "./install.js";
 import { fitText } from "./fittext.js";
+import { renderMarkdown } from "./markdown.js";
 
 let view = "home";
 let currentSectionId = null;
@@ -95,7 +96,7 @@ function renderSection() {
   node.querySelector('[data-slot="step-title"]').textContent = step.title;
   const desc = node.querySelector('[data-slot="step-description"]');
   if (step.description) {
-    desc.textContent = step.description;
+    desc.innerHTML = renderMarkdown(step.description);
     desc.hidden = false;
   }
 

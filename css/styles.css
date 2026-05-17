@@ -265,6 +265,21 @@ body.wizard main {
   font-size: 15px;
   line-height: 1.55;
   color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wizard-step-description p {
+  margin: 0;
+}
+
+.wizard-step-description strong {
+  font-weight: 700;
+}
+
+.wizard-step-description em {
+  font-style: italic;
 }
 
 .wizard-extra {
@@ -308,31 +323,35 @@ body.wizard main {
   color: var(--text-primary);
 }
 
-.wizard-extra-list {
+.wizard-extra-list,
+.wizard-step-description ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-left: 4px;
+  margin: 0;
 }
 
-.wizard-extra-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+.wizard-extra-list li,
+.wizard-step-description ul li {
+  position: relative;
+  padding-left: 18px;
   font-size: 15px;
   line-height: 1.5;
   color: var(--text-primary);
 }
 
-.wizard-extra-list li::before {
+.wizard-extra-list li::before,
+.wizard-step-description ul li::before {
   content: "";
-  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 0.55em;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #f59e0b;
-  margin-top: 9px;
 }
 
 /* ── Footer (wizard nav) ── */
