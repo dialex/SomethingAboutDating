@@ -18,6 +18,12 @@ function renderInline(s) {
     .replace(/\*(.+?)\*/g, "<em>$1</em>");
 }
 
+// Single-line markdown: escape HTML, then apply **bold** / *italic*.
+// Use for content that is already inside its own block element (e.g. <li>).
+export function renderInlineMarkdown(s) {
+  return renderInline(escapeHtml(s));
+}
+
 export function renderMarkdown(src) {
   const lines = escapeHtml(src).split("\n");
   const out = [];

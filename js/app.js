@@ -1,7 +1,7 @@
 import { sections } from "./workflow.js";
 import { setupInstallBanner } from "./install.js";
 import { fitText } from "./fittext.js";
-import { renderMarkdown } from "./markdown.js";
+import { renderMarkdown, renderInlineMarkdown } from "./markdown.js";
 
 let view = "home";
 let currentSectionId = null;
@@ -112,14 +112,14 @@ function renderSection() {
       ul.className = "wizard-extra-list";
       extraDesc.forEach(d => {
         const li = document.createElement("li");
-        li.textContent = d;
+        li.innerHTML = renderInlineMarkdown(d);
         ul.appendChild(li);
       });
       body.appendChild(ul);
     } else if (extraDesc) {
       const p = document.createElement("p");
       p.className = "wizard-extra-text";
-      p.textContent = extraDesc;
+      p.innerHTML = renderInlineMarkdown(extraDesc);
       body.appendChild(p);
     }
     extraSlot.replaceWith(extra);

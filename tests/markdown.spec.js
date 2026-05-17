@@ -4,27 +4,30 @@ import { test, expect } from "@playwright/test";
 // real workflow content, which can change. They verify the markdown subset that
 // step.description supports: paragraphs, bullet lists, bold, italic.
 
-async function loadWithFixture(page, description) {
-  await page.addInitScript((desc) => {
-    window.__fixtureDescription = desc;
-  }, description);
+async function loadWithFixture(page, description, tips = null) {
+  await page.addInitScript((data) => {
+    window.__fixtureDescription = data.description;
+    window.__fixtureTips = data.tips;
+  }, { description, tips });
 
   await page.goto("/");
 
   await page.evaluate(async () => {
     const mod = await import("/js/workflow.js");
+    const step = {
+      id: "only",
+      title: "Markdown fixture",
+      description: window.__fixtureDescription,
+    };
+    if (window.__fixtureTips) {
+      step.extra = { title: "Tips", description: window.__fixtureTips };
+    }
     mod.sections.unshift({
       id: "mdfix",
       title: "MDFix",
       subtitle: "",
       color: ["#000", "#000"],
-      steps: [
-        {
-          id: "only",
-          title: "Markdown fixture",
-          description: window.__fixtureDescription,
-        },
-      ],
+      steps: [step],
     });
     location.hash = "mdfix/1";
   });
@@ -78,5 +81,22 @@ test.describe("Markdown in step description", () => {
     const desc = page.locator('[data-slot="step-description"]');
     await expect(desc.locator("p")).toHaveText("Just a plain sentence.");
     await expect(desc.locator("ul")).toHaveCount(0);
+  });
+
+  test("tips support **bold** and *italic*", async ({ page }) => {
+    await loadWithFixture(page, "Header.", [
+      "First tip with **bold** word.",
+      "Second tip with *italic* word.",
+    ]);
+    const tips = page.locator(".wizard-extra-list");
+    await expect(tips.locator("li strong")).toHaveText("bold");
+    await expect(tips.locator("li em")).toHaveText("italic");
+  });
+
+  test("tips escape raw HTML", async ({ page }) => {
+    await loadWithFixture(page, "Header.", ["<script>alert(1)</script> safe"]);
+    const tips = page.locator(".wizard-extra-list");
+    await expect(tips.locator("script")).toHaveCount(0);
+    await expect(tips.locator("li")).toContainText("<script>");
   });
 });
