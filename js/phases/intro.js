@@ -9,7 +9,7 @@ export const intro = {
       id: "overview",
       title: "What awaits you",
       description: `Dating is a journey with four stages:
-      - You'll **meet** people and some will pick your interest.
+      - You'll **meet** people and some will spark your interest.
       - You'll go on **dates** to learn more about them and check how well you get along.
       - You'll find a **match** and start a romantic relationship.
       - You'll **share** a happy life for as long as it works for both of you.`,
@@ -17,9 +17,9 @@ export const intro = {
         title: "Tips",
         description: [
           "Prepare. Don't improvise or rely on luck.",
-          "Accept the things you can't change. If someone rejects over that, you dodged a bullet.",
+          "Accept the things you can't change. If someone rejects you over that, you dodged a bullet.",
           'Your actions move "the spark" up or down. If it drops below a certain point, it cannot be recovered. Carry on.',
-          "You'll reject and you'll be rejected. It's part of the process and eventually there's a match.",
+          "You'll reject and be rejected. It's all part of the process until you find a match.",
         ],
       },
     },
@@ -31,7 +31,7 @@ export const intro = {
       extra: {
         title: "Tips",
         description: [
-          "Sleep 8h on a consistent schedule.",
+          "Sleep 8 hours on a consistent schedule.",
           "Get some sunlight every day, even briefly.",
           "Move your body daily. Anything counts.",
           "Stop using porn, alcohol and other drugs as emotional substitutes.",
@@ -49,7 +49,7 @@ export const intro = {
         description: [
           "Cut and clean your nails.",
           "Shave or trim any body hair to your taste.",
-          "Wear simple, not worned out, good quality clothes that make you feel comfortable.",
+          "Wear simple, good quality clothes that fit well and aren't worn out.",
         ],
       },
     },
@@ -57,7 +57,7 @@ export const intro = {
       id: "confidence",
       title: "Build your confidence",
       description:
-        "Everyone has insecurities, but **confident people** don't show it so fake it until you make it. Expect the first hundred attempts to feel awkward, then it will get easier.",
+        "Everyone has insecurities, but **confident people** don't show them. Fake it until you make it. Expect the first hundred attempts to feel awkward, then it will get easier.",
       extra: {
         title: "Tips",
         description: [
@@ -73,11 +73,11 @@ export const intro = {
       id: "social",
       title: "Polish your social skills",
       description: `
-      Be someone your date is **proud to be seen with**: polite, respectful, treat others as equals, behave yourself.
+      Be someone your date is **proud to be seen with**. Stay polite, respectful, and well-mannered. Treat others as equals.
 
-      Respect their preferences. Also pay attention to their **body language**, not just their words: joy, discomfort, hot, cold, looking away, etc.
+      Respect their preferences. Pay attention to their **body language**, not just their words. Watch for joy, discomfort, too hot, too cold, glances away, etc.
 
-      Be **playful**. You don't need to do a stand up comedy act or memorise jokes. Just keep the mood light and funny.
+      Be **playful**. You don't need to do a stand-up comedy act or memorise jokes. Just keep the mood light and funny.
       `,
       extra: {
         title: "Tips",
@@ -105,9 +105,9 @@ export const intro = {
 
       Playful.
 
-      If you followed the previous advice **that's you**. And that alone puts you ahead of half the population.
+      If you followed the previous advice, **that's you**. And that alone puts you ahead of half the population.
 
-      You're ready to give your best.
+      You're ready to give it your best.
       `,
     },
   ],
