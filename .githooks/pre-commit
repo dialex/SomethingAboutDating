@@ -1,12 +1,18 @@
 #!/bin/sh
-# Bump patch version in manifest.json and service-worker.js on every commit.
+# Bump version in manifest.json and service-worker.js on every commit.
+# Defaults to patch. Override with BUMP=minor or BUMP=major when committing
+# a milestone, e.g. `BUMP=minor git commit -m "..."`.
 
 VERSION=$(node -p "require('./manifest.json').version")
+BUMP="${BUMP:-patch}"
 
 NEW_VERSION=$(node -p "
   const parts = '$VERSION'.split('.').map(Number);
   while (parts.length < 3) parts.push(0);
-  parts[2] += 1;
+  const bump = '$BUMP';
+  if (bump === 'major') { parts[0] += 1; parts[1] = 0; parts[2] = 0; }
+  else if (bump === 'minor') { parts[1] += 1; parts[2] = 0; }
+  else { parts[2] += 1; }
   parts.join('.');
 ")
 
