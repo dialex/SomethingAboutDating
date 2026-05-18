@@ -6,26 +6,32 @@ export const intro = {
   cover: "images/intro.jpg",
   steps: [
     {
-      id: "reality",
-      title: "Accept how dating works",
-      description: "If you prepare you increase your chances, so don't wing it.",
+      id: "overview",
+      title: "What awaits you",
+      description: `Dating is a journey with four stages:
+      - You'll **meet** people and some will pick your interest.
+      - You'll go on **dates** to learn more about them and check how well you get along.
+      - You'll find a **match** and start a romantic relationship.
+      - You'll **share** a happy life for as long as it works for both of you.`,
       extra: {
         title: "Tips",
         description: [
-          "Your behaviour affects how someone feels about you.",
-          "Don't worry over things you can't change. Personality matters way more.",
-          "Once the spark drops below a certain point, it cannot be recovered.",
-          "If someone rejects you over a trivial trait, you've dodged a bullet.",
+          "Prepare. Don't improvise or rely on luck.",
+          "Accept the things you can't change. If someone rejects over that, you dodged a bullet.",
+          'Your actions move "the spark" up or down. If it drops below a certain point, it cannot be recovered. Carry on.',
+          "You'll reject and you'll be rejected. It's part of the process and eventually there's a match.",
         ],
       },
     },
     {
-      id: "mentalhealth",
-      title: "Nurture your mental health",
-      description: "Sleep 8 hours on a consistent schedule.",
+      id: "bodymind",
+      title: "Recharge your body and mind",
+      description:
+        "Dating is exhausting. Make sure your body has energy and your mind is steady before you start.",
       extra: {
         title: "Tips",
         description: [
+          "Sleep 8h on a consistent schedule.",
           "Get some sunlight every day, even briefly.",
           "Move your body daily. Anything counts.",
           "Stop using porn, alcohol and other drugs as emotional substitutes.",
@@ -34,45 +40,75 @@ export const intro = {
       },
     },
     {
-      id: "socialskills",
-      title: "Polish your social skills",
-      description: "Treat everyone the same. Don't talk down to people.",
+      id: "appearance",
+      title: "Show the best version of yourself",
+      description:
+        "You only get one shot at a **first impression**, so make it count. Dress nice. Smell nice. Look clean.",
       extra: {
         title: "Tips",
         description: [
-          "Be polite, say please and thank you.",
-          "Don't be too available or easy to read. People like some mystery.",
-          "Calibrate your humour. Most people aren't as online as you.",
+          "Cut and clean your nails.",
+          "Shave or trim any body hair to your taste.",
+          "Wear simple, not worned out, good quality clothes that make you feel comfortable.",
         ],
       },
     },
     {
       id: "confidence",
       title: "Build your confidence",
-      description: "Everyone is insecure. Confident people just don't show it.",
+      description:
+        "Everyone has insecurities, but **confident people** don't show it so fake it until you make it. Expect the first hundred attempts to feel awkward, then it will get easier.",
       extra: {
         title: "Tips",
         description: [
-          "Maintain eye contact. Looking away signals insecurity fast.",
-          "Slow down physically. Relaxed posture, shoulders back, no flailing.",
-          "Never put yourself down. It's not self-deprecating humour, it's a turn-off.",
-          "Stay calm in stressful situations. Don't let anxiety show.",
+          "Maintain eye contact, without staring. Looking away shows insecurity.",
+          "Slow down physically. Relaxed posture, shoulders back, chin up.",
+          "Stay calm. Don't show hesitation or anxiety.",
+          "Never use self-deprecating jokes.",
+          "Ignore charisma gurus.",
         ],
       },
     },
     {
-      id: "appearance",
-      title: "Sort your appearance",
-      description: "Shave or trim your facial hair neatly.",
+      id: "social",
+      title: "Polish your social skills",
+      description: `
+      Be someone your date is **proud to be seen with**: polite, respectful, treat others as equals, behave yourself.
+
+      Respect their preferences. Also pay attention to their **body language**, not just their words: joy, discomfort, hot, cold, looking away, etc.
+
+      Be **playful**. You don't need to do a stand up comedy act or memorise jokes. Just keep the mood light and funny.
+      `,
       extra: {
         title: "Tips",
         description: [
-          "Wash your hair and get a haircut if it's overdue.",
-          "Cut and clean your nails.",
-          "Dress simple but sharp. Men: plain polo with jeans, belt and shoes matching. Women: dress or skirt with clean lines.",
-          "Avoid hoodies, ripped jeans, and sports sneakers unless they're a deliberate style choice.",
+          'Say "please" and "thank you".',
+          "Be a little vague, make them want to ask.",
+          "Calibrate your jokes. No online memes.",
+          "Give unexpected or exaggerated answers to casual questions.",
         ],
       },
+    },
+    {
+      id: "ready",
+      title: "You're ready to begin",
+      description: `
+      Presentable.
+
+      Energised.
+
+      Confident.
+
+      Respectful.
+
+      Mindful.
+
+      Playful.
+
+      If you followed the previous advice **that's you**. And that alone puts you ahead of half the population.
+
+      You're ready to give your best.
+      `,
     },
   ],
 };
