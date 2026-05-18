@@ -1,0 +1,91 @@
+# INTRO v2 — candidate
+
+Source: chapter 1 of the book + what is currently in js/phases/intro.js.
+Format mirrors a step block: title, description, tips.
+Description supports the markdown subset rendered by js/markdown.js:
+  - lines starting with "- " become a bullet list
+  - **text** becomes bold
+  - *text* becomes italic
+Style: sentence case titles, descriptions stay short, no em-dashes / semicolons.
+
+Notes for the implementer:
+- intro.js currently has two steps with id "overview" — only one survives in v2.
+- Order below is the proposed v2 order. The current file puts appearance last,
+  but chapter 1 introduces it as part of "the basics" before confidence — v2
+  follows the book.
+
+
+STEP 1 — What awaits you
+Description:
+  Dating is a journey with four stages:
+  - You'll **meet** people and some will catch your interest.
+  - You'll go on **dates** to learn more about them and see how well you get along.
+  - You'll find a **match** and start an exclusive relationship.
+  - You'll **share** a happy life for as long as it works for both of you.
+Tips:
+  - Prepare. Don't improvise or rely on luck.
+  - Your behaviour moves *the spark* up or down. Once it drops below a certain point, it cannot come back.
+  - If someone rejects you over a trivial trait, you dodged a bullet. Personality beats superficial traits.
+
+
+
+description: "Sleep 8 hours on a consistent schedule.",
+extra: {
+  title: "Tips",
+  description: [
+    "Get some sunlight every day, even briefly.",
+    "Move your body daily. Anything counts.",
+    "Stop using porn, alcohol and other drugs as emotional substitutes.",
+    "If you're struggling, get support (therapy, medication) before jumping into dating.",
+
+STEP 2 — Recharge your body and mind
+Description:
+  Dating will be exhausting so ensure are refreshed before you get out there.
+Tips:
+  - Sleep 8 hours on a consistent schedule.
+  - Get some sunlight every day, even briefly.
+  - Move your body daily. Anything counts.
+  - Stop using porn, alcohol and other drugs as emotional substitutes.
+  - If you're struggling, get support (therapy, medication) before jumping into dating.
+
+
+STEP 3 — Sort your appearance
+Description:
+  Present the **best version** of yourself. The basics go a long way.
+  - Dress in simple, good quality clothes that fit and feel comfortable.
+  - Smell nice and look clean.
+  - Shave or trim head, face and body hair to your taste.
+  - Cut and clean your nails.
+Tips:
+  - Avoid worn out clothes, hoodies, ripped jeans, and sports sneakers unless they're a deliberate style choice.
+  - Men. A plain polo with jeans works. Match belt and shoes.
+  - Women. A dress or skirt with clean lines works.
+
+
+STEP 4 — Build your confidence
+Description:
+  Everyone is insecure. **Confident people just don't show it.** Fake it till you make it. Expect the first hundred attempts to feel awkward, then it will get easier.
+Tips:
+  - Maintain eye contact. Looking away shows insecurity.
+  - Slow down physically. Relax posture, shoulders back, don't hesitate.
+  - Stay calm, don't let anxiety show. No nervous laughs. Never use self-deprecating jokes.
+  - Don't be an emotionless brick. Be vulnerable later, once trust is there.
+  - Ignore charisma gurus. They make simple things sound complex to take your money.
+
+
+STEP 5 — Polish your social skills
+Description:
+  Be someone your date is proud to be seen with: polite, respectful, treat others as equals, behave yourself.
+  Respect their preferences. Also pay attention to their body language, not just their words: joy, discomfort, hot, cold, looking away, etc.
+  Humor always wins. You don't need to do a stand up comedy act or memorise jokes. Just keep the mood light and playful.
+Tips:
+  - Say "please" and "thank you".
+  - Be a little vague, make them want to ask.
+  - Calibrate your jokes. Stay away from online memes.
+  - Give unexpected or exaggerated answers to casual questions.
+
+
+END STATE
+If you look presentable, smell nice, are mentally stable, treat people with respect,
+and carry a bit of confidence and humour, you're already ahead of half the population.
+Ready for the next phase.
