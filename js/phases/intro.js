@@ -1,7 +1,7 @@
 export const intro = {
   id: "intro",
   title: "Intro",
-  subtitle: "TODO#1",
+  subtitle: "Start with you",
   color: ["#f472b6", "#fb7185"],
   cover: "images/intro.jpg",
   steps: [
