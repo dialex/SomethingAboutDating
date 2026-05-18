@@ -836,24 +836,24 @@ body:not(.home) .install-banner {
   color: var(--text-secondary);
 }
 
-.credits-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.credits-list li {
+.credits-card p {
   font-size: 14px;
   line-height: 1.5;
   color: var(--text-primary);
+  margin: 0;
 }
 
-.credits-list a {
+.credits-card a {
   color: var(--primary);
   text-decoration: none;
 }
 
-.credits-list a:hover {
+.credits-card a:hover {
   text-decoration: underline;
+}
+
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
