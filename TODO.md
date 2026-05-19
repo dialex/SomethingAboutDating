@@ -4,9 +4,7 @@
 
 ### OTHERS
 
-- Dark mode support. Toggle to left of the credits link, sun and moon
 - Translations. Toggle to right of the credits link, Flag and language code, 2 letters. EN and PT to start.
-- Persist progress in `localStorage` so users can close and return
 
 - Animations on transitions, like this to load the homepage for the first time https://github.com/swup/demos/tree/main/multiple/
 - this for hovering cards in the home page https://motion.dev/docs/hover#usage
