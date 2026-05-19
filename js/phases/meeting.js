@@ -18,7 +18,7 @@ export const meeting = {
           "Same maturity. Under 25, ±2 years. Else, ±5.",
           "Know your deal breakers and stick to them.",
           "Don't \"fix them\". You're not a therapist.",
-          "They must look attractive to you from the start, else you'll dump them when you meet someone you really find attractive.",
+          "They must look attractive to you from the start, otherwise you'll dump them when you meet someone you really find attractive.",
         ],
       },
     },
@@ -27,7 +27,7 @@ export const meeting = {
       title: "Meet people in real life",
       description: `People in public places are usually busy with their own day and don't want to be approached. You know nothing about them either, so it's a shot in the dark.
 
-        Start from **something in common**. Private gatherings like events, workshops, talks, conventions, parties and weddings give you that common ground and that permissions to interact.
+        Start from **something in common**. Private gatherings like events, workshops, talks, conventions, parties and weddings give you common ground and permission to interact.
         `,
       extra: {
         title: "Tips",
@@ -43,19 +43,19 @@ export const meeting = {
       title: "Meet people online",
       description: `Dating apps are **highly competitive** spaces, riddled with fake profiles, optimised to keep you there.
 
-      It will be an **overwhelming** experience for women and **depressive** experience for men.
+      It will be an **overwhelming** experience for women and a **depressing** experience for men.
 
-      Are you sure you want to try it?"
+      Are you sure you want to try it?
       `,
       extra: {
         title: "Tips",
         description: [
-          "Use 4 photos, all recent, smiling: casual, formal, being social, doing something (hobby / sport)",
+          "Use 4 recent photos where you're smiling. One casual, one formal, one being social, one doing something (hobby or sport).",
           "Keep your bio short or blank. Don't overshare.",
           "Set filters to your area and age.",
           "Only like profiles you are genuinely attracted to.",
           "Ask open-ended questions based on their photos or bio.",
-          "After a dozen messages, propose a coffee date. If they decline, give up. You're not a chat bot.",
+          "After a dozen messages, propose a coffee date. If they decline, give up. You're not a chatbot.",
         ],
       },
     },
@@ -84,7 +84,7 @@ export const meeting = {
       extra: {
         title: "Tips",
         description: [
-          "**Good signs** are follow-up questions, enthusiasm, eye contact, proximity and they help you if the conversation stalls.",
+          "**Good signs** are follow-up questions, enthusiasm, eye contact, proximity and help when the conversation stalls.",
           "**Bad signs** are flat replies, closed answers, no questions, looking away, closed body language and using the phone.",
           'Forget "hard to get". That\'s either lack of interest or manipulation.',
         ],
@@ -93,7 +93,7 @@ export const meeting = {
     {
       id: "thenumber",
       title: "Ask their number",
-      description: `The conversation was your pitch. Asking for their phone number is where you seal the deal. Use a clean line like:
+      description: `The conversation was your pitch. Asking for their phone number is where you seal the deal. Use a clean line.
 
         *"I've really enjoyed talking to you. **Can I have your phone number?**"*.
 
@@ -128,7 +128,7 @@ export const meeting = {
       description:
         `That's the hardest part done.
 
-        From a pool of strangers scattered in the world you found someone you are interested in and they liked you enough to hand over their number.
+        From a pool of strangers scattered in the world, you found someone you are interested in, and they liked you enough to hand over their number.
 
         The next step is using that phone number.
 
