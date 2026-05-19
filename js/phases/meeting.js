@@ -1,7 +1,7 @@
 export const meeting = {
   id: "meeting",
   title: "Meeting",
-  subtitle: "TODO#2",
+  subtitle: "Find someone worth your time",
   color: ["#fbbf24", "#fb923c"],
   cover: "images/meeting.jpg",
   steps: [
@@ -9,46 +9,70 @@ export const meeting = {
       id: "who",
       title: "Know who to pursue",
       description:
-        "Only pursue someone **fully available**. Single, stable, and a realistic fit for your life.",
+        "Decide what kind of person you want in your life. Single, nearby, close in age, attractive, emotionally stable and free of red flags.",
       extra: {
         title: "Tips",
         description: [
-          "Pursue only single people. No active breakups, divorces, or exes still around.",
-          "Keep travel distance under one hour. Constant travel wears both of you out.",
-          "Keep age gaps small. Under 25, max 2 years. Over 25, max 5 years.",
-          "Only pursue someone you find attractive right now. Don't date 'potential'.",
-          "Skip anyone you'd have to fix. You're not their therapist.",
-          "Know your deal breakers in advance and stick to them.",
+          "No active breakups or exes still around.",
+          "Keep travel distance under one hour.",
+          "Same maturity. Under 25, ±2 years. Else, ±5.",
+          "Know your deal breakers and stick to them.",
+          "Don't \"fix them\". You're not a therapist.",
+          "They must look attractive to you from the start, else you'll dump them when you meet someone you really find attractive.",
         ],
       },
     },
     {
       id: "where",
-      title: "Meet people where you share context",
-      description:
-        "Start from something in common, otherwise you'll come off as a creep. Private events like lectures, parties, weddings, and banquets give you that context for free.",
+      title: "Meet people in real life",
+      description: `People in public places are usually busy with their own day and don't want to be approached. You know nothing about them either, so it's a shot in the dark.
+
+        Start from **something in common**. Private gatherings like events, workshops, talks, conventions, parties and weddings give you that common ground and that permissions to interact.
+        `,
       extra: {
         title: "Tips",
         description: [
-          "Pick places where talking to other attendees is socially expected.",
-          "Use the shared event as your opener.",
-          "Skip cold approaches on the street.",
+          "Pick places where talking to others is expected.",
+          "Use the shared interest as your opener.",
+        ],
+      },
+    },
+
+    {
+      id: "onlinedating",
+      title: "Meet people online",
+      description: `Dating apps are **highly competitive** spaces, riddled with fake profiles, optimised to keep you there.
+
+      It will be an **overwhelming** experience for women and **depressive** experience for men.
+
+      Are you sure you want to try it?"
+      `,
+      extra: {
+        title: "Tips",
+        description: [
+          "Use 4 photos, all recent, smiling: casual, formal, being social, doing something (hobby / sport)",
+          "Keep your bio short or blank. Don't overshare.",
+          "Set filters to your area and age.",
+          "Only like profiles you are genuinely attracted to.",
+          "Ask open-ended questions based on their photos or bio.",
+          "After a dozen messages, propose a coffee date. If they decline, give up. You're not a chat bot.",
         ],
       },
     },
     {
       id: "talking",
-      title: "Talk like a normal person",
-      description:
-        "Your goals are simple. Don't come off as a creep, read whether they're interested, and move things toward a date.",
+      title: "Get to know them",
+      description: `Focus on having a light-hearted conversation.
+
+        Your goals are simple. Get to know their **interests and personality**, find out if they are into you, and **decide** to move forward to a date or stop it there.`,
       extra: {
         title: "Tips",
         description: [
-          "Don't ask personal questions early (age, address, relationship status).",
+          "Don't ask personal questions (age, address, workplace, relationship status).",
           "Don't gossip or pass judgement.",
           "Don't bring up internet culture or rants.",
-          "Don't overshare. It reads as lonely or desperate.",
-          "Skip pickup lines and flirting routines. Keep it light and fun.",
+          "Don't overshare. It reads as lonely.",
+          "Skip flirting or pickup lines.",
         ],
       },
     },
@@ -56,48 +80,60 @@ export const meeting = {
       id: "interest",
       title: "Read their interest",
       description:
-        "Spend your energy on people who seem genuinely glad you're talking to them. If they like you, they make it easy.",
+        "Pay attention to signs of interest. Spend your time and energy on people who seem glad to be with you.",
       extra: {
         title: "Tips",
         description: [
-          "Good signs are questions back, flowing conversation, enthusiasm, and help when things stall.",
-          "Bad signs are flat replies, no questions back, no eye contact, and closed body language.",
-          "'Hard to get' isn't real. It's either lack of interest or manipulation.",
-          "If they pull away, let them go.",
+          "**Good signs** are follow-up questions, enthusiasm, eye contact, proximity and they help you if the conversation stalls.",
+          "**Bad signs** are flat replies, closed answers, no questions, looking away, closed body language and using the phone.",
+          'Forget "hard to get". That\'s either lack of interest or manipulation.',
         ],
       },
     },
     {
       id: "thenumber",
-      title: "Ask for the number",
-      description:
-        "This is where you **seal the deal**. Ask directly so you can call them for a date.",
+      title: "Ask their number",
+      description: `The conversation was your pitch. Asking for their phone number is where you seal the deal. Use a clean line like:
+
+        *"I've really enjoyed talking to you. **Can I have your phone number?**"*.
+
+        Their response tells you whether you've got a date.`,
       extra: {
         title: "Tips",
         description: [
-          "Use a clean line like \"I've really enjoyed talking to you. What's your phone number?\".",
-          "After asking, shut up. Don't fill the silence.",
-          "A phone number is the sweet spot. More intimate than social media, less than an address.",
-          "Don't offer your number in exchange unless asked. They'll get it when you call.",
-          "Don't ring their phone on the spot. It looks desperate and distrustful.",
-          "Once you have the number, politely end the conversation and leave.",
-          "If you can't leave freely, time the ask for the very end.",
+          "After asking, shut up. Don't fill the silence. This forces them to give you a genuine reaction.",
+          "A phone number is the sweet spot. More intimate than social media, but less than an address.",
+          "If they aren't serious or interested in you they will hesitate or refuse.",
         ],
       },
     },
     {
-      id: "hiddenno",
-      title: "Spot a hidden no",
+      id: "closeout",
+      title: "Close the conversation",
       description:
-        "Some answers sound polite but they're **rejections**. Take them at face value and move on.",
+        "The reason for asking their number should be obvious. Don't justify, don't linger, just wrap up and leave.",
       extra: {
         title: "Tips",
         description: [
-          "'Why do you want it?' is game over, whatever you answer.",
-          "'How about social media instead?' is a polite no.",
-          "'I'm not comfortable giving my number' is a no. Their crush would get it.",
+          'Stay mysterious if they ask why. *"Because I want to bring happiness into your life"* or *"isn\'t it obvious?"*.',
+          "**Don't ring** their phone. **Don't offer** your number (unless they ask). The anticipation works in your favour.",
+          "Once you have the number, politely end the chat and leave. If you can't leave, time the ask for the very end.",
+          'Any other answer that is not their number is a polite "no". Give up and carry on.',
         ],
       },
+    },
+    {
+      id: "ready",
+      title: "You've got a number",
+      description:
+        `That's the hardest part done.
+
+        From a pool of strangers scattered in the world you found someone you are interested in and they liked you enough to hand over their number.
+
+        The next step is using that phone number.
+
+        Time to plan the date.
+        `,
     },
   ],
 };
