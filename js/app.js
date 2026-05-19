@@ -1,5 +1,6 @@
 import { sections } from "./workflow.js";
 import { setupInstallBanner } from "./install.js";
+import { setupThemeToggle } from "./theme.js";
 import { fitText } from "./fittext.js";
 import { renderMarkdown, renderInlineMarkdown } from "./markdown.js";
 
@@ -657,6 +658,7 @@ $("btn-restart").addEventListener("click", goHome);
 $("btn-chevron").addEventListener("click", goHome);
 
 setupInstallBanner();
+setupThemeToggle();
 
 fetch("manifest.json")
   .then(r => r.json())

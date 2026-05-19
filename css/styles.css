@@ -5,11 +5,16 @@
 }
 
 html {
-  background-color: #fff1f2;
+  background-color: var(--bg-home);
   color-scheme: light;
 }
 
-:root {
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root,
+html[data-theme="light"] {
   --primary: #e11d48;
   --primary-alt: #ec4899;
   --primary-light: #fce7ed;
@@ -22,9 +27,46 @@ html {
   --border: #e7e5e4;
   --danger: #dc2626;
   --success: #059669;
+  --extra-bg: #fef3c7;
+  --extra-icon-bg: #fde68a;
+  --extra-icon-color: #b45309;
+  --extra-bullet: #f59e0b;
+  --footer-msg-bg: rgba(255, 255, 255, 0.6);
+  --peek-tips-bg: rgba(254, 243, 199, 0.55);
+  --skeleton: rgba(0, 0, 0, 0.07);
+  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.06);
+  --shadow-card-strong: 0 4px 20px rgba(0, 0, 0, 0.13);
+  --shadow-btn: 0 4px 14px rgba(0, 0, 0, 0.12);
+  --shadow-chevron: 0 4px 14px rgba(0, 0, 0, 0.08);
   --radius: 16px;
   --radius-sm: 10px;
   --radius-lg: 24px;
+}
+
+html[data-theme="dark"] {
+  --primary: #f43f5e;
+  --primary-alt: #f472b6;
+  --primary-light: #3f1d2a;
+  --primary-dark: #fb7185;
+  --text-primary: #f5f5f4;
+  --text-secondary: #a8a29e;
+  --surface: #292524;
+  --bg: #1c1917;
+  --bg-home: #1c1917;
+  --border: #44403c;
+  --danger: #ef4444;
+  --success: #10b981;
+  --extra-bg: #3a2e10;
+  --extra-icon-bg: #5b4416;
+  --extra-icon-color: #fcd34d;
+  --extra-bullet: #fbbf24;
+  --footer-msg-bg: rgba(255, 255, 255, 0.04);
+  --peek-tips-bg: rgba(252, 211, 77, 0.08);
+  --skeleton: rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.35);
+  --shadow-card-strong: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-btn: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-chevron: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -71,7 +113,7 @@ body.wizard header {
   color: var(--text-primary);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-chevron);
 }
 
 .btn-chevron:active {
@@ -130,7 +172,7 @@ body.wizard main {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-card);
   touch-action: pan-y;
   transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease;
   user-select: none;
@@ -184,7 +226,7 @@ body.wizard main {
 
 .peek-skeleton .skeleton-line {
   height: 14px;
-  background: rgba(0, 0, 0, 0.07);
+  background: var(--skeleton);
   border-radius: 4px;
 }
 
@@ -198,7 +240,7 @@ body.wizard main {
 .peek-skeleton .skeleton-line.medium { width: 80%; }
 
 .peek-skeleton .peek-tips {
-  background: rgba(254, 243, 199, 0.55);
+  background: var(--peek-tips-bg);
   border-radius: var(--radius);
   padding: 18px;
   display: flex;
@@ -237,7 +279,7 @@ body.wizard main {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .peek-check-circle svg {
@@ -277,7 +319,7 @@ body.wizard main {
 }
 
 .wizard-extra {
-  background: #fef3c7;
+  background: var(--extra-bg);
   border-radius: var(--radius);
   padding: 18px 18px;
   display: flex;
@@ -296,8 +338,8 @@ body.wizard main {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #fde68a;
-  color: #b45309;
+  background: var(--extra-icon-bg);
+  color: var(--extra-icon-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,7 +387,7 @@ body.wizard main {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: var(--extra-bullet);
 }
 
 /* ── Footer (wizard nav) ── */
@@ -413,7 +455,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   background: var(--surface);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-btn);
 }
 
 .wizard-btn-prev,
@@ -430,7 +472,7 @@ button:disabled {
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
-  color: #f59e0b;
+  color: var(--extra-bullet);
 }
 
 .wizard-btn-restart:active {
@@ -481,13 +523,19 @@ button:disabled {
   transform: scale(1);
 }
 
-/* ── Home meta (credits + version) ── */
+/* ── Home meta (theme + credits + version) ── */
 .home-meta {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
   padding-top: 4px;
+}
+
+.home-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-credits {
@@ -500,6 +548,70 @@ button:disabled {
 
 .btn-credits:hover {
   color: var(--primary);
+}
+
+.theme-switch {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 0;
+}
+
+.theme-switch-track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background 0.2s ease;
+}
+
+.theme-switch-icon {
+  position: absolute;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: color 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.theme-switch-icon-sun  { left: 0; }
+.theme-switch-icon-moon { right: 0; }
+
+.theme-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+html[data-theme="dark"] .theme-switch-thumb {
+  transform: translateX(22px);
+}
+
+/* The active icon sits above the thumb and uses the primary colour so the
+   current theme is obvious. The inactive icon stays dim on the track. */
+html[data-theme="light"] .theme-switch-icon-sun,
+html[data-theme="dark"]  .theme-switch-icon-moon {
+  color: var(--primary);
+  opacity: 1;
+  z-index: 3;
 }
 
 #app-version {
@@ -692,7 +804,7 @@ body:not(.home) .install-banner {
   text-align: center;
   font-size: 13px;
   color: var(--text-secondary);
-  background: rgba(255,255,255,0.6);
+  background: var(--footer-msg-bg);
   border-radius: var(--radius);
   padding: 14px 16px;
   line-height: 1.5;
@@ -715,7 +827,7 @@ body:not(.home) .install-banner {
   background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+  box-shadow: var(--shadow-card-strong);
   cursor: pointer;
 }
 
@@ -783,7 +895,7 @@ body:not(.home) .install-banner {
   align-items: center;
   gap: 12px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-card);
 }
 
 .wip-title {
@@ -806,7 +918,7 @@ body:not(.home) .install-banner {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-card);
 }
 
 .credits-title {

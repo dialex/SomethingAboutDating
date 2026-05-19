@@ -16,6 +16,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Gorditas:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <title>Something Dating</title>
+  <script>
+    // Apply theme before paint to avoid flash. Saved choice > OS preference.
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var theme = saved === "dark" || saved === "light"
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (_) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -98,7 +112,22 @@
     </div>
     <p class="home-footer-msg">Take your time with each phase. Great relationships are built step by step.</p>
     <div class="home-meta">
-      <a href="#credits" class="btn-credits">Credits</a>
+      <div class="home-meta-row">
+        <button class="theme-switch" id="btn-theme" type="button" role="switch" aria-label="Toggle theme">
+          <span class="theme-switch-track">
+            <span class="theme-switch-icon theme-switch-icon-sun" aria-hidden="true">
+              <!-- lucide: sun -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </span>
+            <span class="theme-switch-icon theme-switch-icon-moon" aria-hidden="true">
+              <!-- lucide: moon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-switch-thumb" aria-hidden="true"></span>
+          </span>
+        </button>
+        <a href="#credits" class="btn-credits">Credits</a>
+      </div>
       <div id="app-version" data-slot="version"></div>
     </div>
   </template>
