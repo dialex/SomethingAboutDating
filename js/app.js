@@ -59,8 +59,11 @@ function renderHome() {
     grid.appendChild(node);
   });
 
+  // Snapshot the install banner before replaceChildren detaches it — once
+  // it's not in the document, getElementById can no longer find it.
+  const banner = $("install-banner");
   main.replaceChildren(home);
-  main.appendChild($("install-banner"));
+  if (banner) main.appendChild(banner);
 }
 
 function renderSection() {
