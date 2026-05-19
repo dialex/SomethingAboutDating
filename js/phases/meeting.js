@@ -14,11 +14,11 @@ export const meeting = {
         title: "Tips",
         description: [
           "No active breakups or exes still around.",
-          "Keep travel distance under one hour.",
-          "Same maturity. Under 25, ±2 years. Else, ±5.",
+          "Keep travel time under one hour.",
+          "Same maturity. Under 25, ±2 years. Otherwise, ±5 years.",
           "Know your deal breakers and stick to them.",
           "Don't \"fix them\". You're not a therapist.",
-          "They must look attractive to you from the start, otherwise you'll dump them when you meet someone you really find attractive.",
+          "They must look attractive to you from the start. Otherwise you'll dump them when you meet someone you really find attractive.",
         ],
       },
     },
@@ -52,7 +52,7 @@ export const meeting = {
         description: [
           "Use 4 recent photos where you're smiling. One casual, one formal, one being social, one doing something (hobby or sport).",
           "Keep your bio short or blank. Don't overshare.",
-          "Set filters to your area and age.",
+          "Set filters for your area and age range.",
           "Only like profiles you are genuinely attracted to.",
           "Ask open-ended questions based on their photos or bio.",
           "After a dozen messages, propose a coffee date. If they decline, give up. You're not a chatbot.",
@@ -64,7 +64,7 @@ export const meeting = {
       title: "Get to know them",
       description: `Focus on having a light-hearted conversation.
 
-        Your goals are simple. Get to know their **interests and personality**, find out if they are into you, and **decide** to move forward to a date or stop it there.`,
+        Your goals are simple. Get to know their **interests and personality**, find out if they are into you, and **decide** to move on to a date or stop it there.`,
       extra: {
         title: "Tips",
         description: [
@@ -85,17 +85,17 @@ export const meeting = {
         title: "Tips",
         description: [
           "**Good signs** are follow-up questions, enthusiasm, eye contact, proximity and help when the conversation stalls.",
-          "**Bad signs** are flat replies, closed answers, no questions, looking away, closed body language and using the phone.",
+          "**Bad signs** are flat replies, closed answers, no questions back, eyes drifting away, closed body language, and phone-checking.",
           'Forget "hard to get". That\'s either lack of interest or manipulation.',
         ],
       },
     },
     {
       id: "thenumber",
-      title: "Ask their number",
+      title: "Ask for their number",
       description: `The conversation was your pitch. Asking for their phone number is where you seal the deal. Use a clean line.
 
-        *"I've really enjoyed talking to you. **Can I have your phone number?**"*.
+        *"I've really enjoyed talking to you. **Can I have your phone number?**"*
 
         Their response tells you whether you've got a date.`,
       extra: {
@@ -103,7 +103,7 @@ export const meeting = {
         description: [
           "After asking, shut up. Don't fill the silence. This forces them to give you a genuine reaction.",
           "A phone number is the sweet spot. More intimate than social media, but less than an address.",
-          "If they aren't serious or interested in you they will hesitate or refuse.",
+          "If they aren't serious or interested in you, they will hesitate or refuse.",
         ],
       },
     },
@@ -115,10 +115,10 @@ export const meeting = {
       extra: {
         title: "Tips",
         description: [
-          'Stay mysterious if they ask why. *"Because I want to bring happiness into your life"* or *"isn\'t it obvious?"*.',
+          'Stay mysterious if they ask why. *"Because I want to bring happiness into your life"* or *"isn\'t it obvious?"*',
           "**Don't ring** their phone. **Don't offer** your number (unless they ask). The anticipation works in your favour.",
           "Once you have the number, politely end the chat and leave. If you can't leave, time the ask for the very end.",
-          'Any other answer that is not their number is a polite "no". Give up and carry on.',
+          'Any answer other than their number is a polite "no". Give up and carry on.',
         ],
       },
     },
@@ -128,7 +128,7 @@ export const meeting = {
       description:
         `That's the hardest part done.
 
-        From a pool of strangers scattered in the world, you found someone you are interested in, and they liked you enough to hand over their number.
+        From a pool of strangers scattered across the world, you found someone you are interested in, and they liked you enough to hand over their number.
 
         The next step is using that phone number.
 
