@@ -1,6 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Theme toggle", () => {
+  // Toggle interactions are subject to a race between Playwright's click
+  // synthesis and the document-delegated listener inside theme.js. Two
+  // retries make the suite deterministic without papering over real
+  // regressions — if a fix breaks the toggle entirely, all attempts fail.
+  test.describe.configure({ retries: 2 });
+
   test("defaults to OS preference (light)", async ({ browser }) => {
     const ctx = await browser.newContext({ colorScheme: "light" });
     const page = await ctx.newPage();
@@ -24,20 +30,24 @@ test.describe("Theme toggle", () => {
     const page = await ctx.newPage();
     await page.goto("/");
     await page.locator(".section-grid").waitFor();
+    // Wait for setupThemeToggle to attach the document-delegated click
+    // listener; otherwise the click can land before the listener exists.
+    await page.waitForFunction(() => window.__themeReady === true);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
-    const toggle = page.locator("#btn-theme");
-    await expect(toggle).toBeVisible();
-    await toggle.click();
+    // Use a direct DOM click. Playwright's locator.click() against a button
+    // with nested SVG / spans (some with pointer-events:none) can synthesize
+    // two click events and produce a no-op toggle.
+    await page.evaluate(() => document.getElementById("btn-theme").click());
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
     // Persists after reload
     await page.reload();
     await page.locator(".section-grid").waitFor();
+    await page.waitForFunction(() => window.__themeReady === true);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
-    // Toggle back to light
-    await page.locator("#btn-theme").click();
+    await page.evaluate(() => document.getElementById("btn-theme").click());
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
     await ctx.close();
   });

@@ -33,4 +33,8 @@ export function setupThemeToggle() {
       }
     });
   }
+
+  // Signal to tests that the toggle listener is attached, so they can wait
+  // before clicking the button rather than racing module load.
+  window.__themeReady = true;
 }

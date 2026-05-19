@@ -8,6 +8,10 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     actionTimeout: 1000,
+    // Block the service worker in tests. The SW caches assets and can serve
+    // stale app.js across tests, which makes interactive tests (e.g. theme
+    // toggle) flake when an earlier-cached version doesn't have the handler.
+    serviceWorkers: "block",
   },
   expect: {
     timeout: 1000,
