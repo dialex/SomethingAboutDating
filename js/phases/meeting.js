@@ -16,8 +16,7 @@ export const meeting = {
           "No active breakups or exes still around.",
           "Keep travel time under one hour.",
           "Same maturity. Under 25, ±2 years. Otherwise, ±5 years.",
-          "Know your deal breakers and stick to them.",
-          "Don't \"fix them\". You're not a therapist.",
+          "Know your deal breakers and stick to them. Don't \"fix them\". You're not a therapist.",
           "They must look attractive to you from the start. Otherwise you'll dump them when you meet someone you really find attractive.",
         ],
       },
@@ -95,7 +94,7 @@ export const meeting = {
       title: "Ask for their number",
       description: `The conversation was your pitch. Asking for their phone number is where you seal the deal. Use a clean line.
 
-        *"I've really enjoyed talking to you. **Can I have your phone number?**"*
+        *"I've really enjoyed talking to you. Can I have your phone number?"*
 
         Their response tells you whether you've got a date.`,
       extra: {
@@ -115,7 +114,7 @@ export const meeting = {
       extra: {
         title: "Tips",
         description: [
-          'Stay mysterious if they ask why. *"Because I want to bring happiness into your life"* or *"isn\'t it obvious?"*',
+          `Stay mysterious if they ask why, *"because I want to bring happiness into your life"* or *"isn't it obvious?"*`,
           "**Don't ring** their phone. **Don't offer** your number (unless they ask). The anticipation works in your favour.",
           "Once you have the number, politely end the chat and leave. If you can't leave, time the ask for the very end.",
           'Any answer other than their number is a polite "no". Give up and carry on.',
@@ -125,8 +124,7 @@ export const meeting = {
     {
       id: "ready",
       title: "You've got a number",
-      description:
-        `That's the hardest part done.
+      description: `That's the hardest part done.
 
         From a pool of strangers scattered across the world, you found someone you are interested in, and they liked you enough to hand over their number.
 

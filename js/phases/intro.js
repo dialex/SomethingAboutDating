@@ -18,7 +18,7 @@ export const intro = {
         description: [
           "Prepare. Don't improvise or rely on luck.",
           "Accept the things you can't change. If someone rejects you over that, you dodged a bullet.",
-          'Your actions move "the spark" up or down. If it drops below a certain point, it cannot be recovered. Carry on.',
+          `Your actions move "the spark" up or down. If it drops below a certain point, it cannot be recovered. Carry on.`,
           "You'll reject and be rejected. It's all part of the process until you find a match.",
         ],
       },
@@ -32,8 +32,8 @@ export const intro = {
         title: "Tips",
         description: [
           "Sleep 8 hours on a consistent schedule.",
-          "Get some sunlight every day, even briefly.",
-          "Move your body daily. Anything counts.",
+          "Get some sunlight every day.",
+          "Move your body daily.",
           "Stop using porn, alcohol and other drugs as emotional substitutes.",
           "If you're struggling, get support (therapy, medication) before jumping into dating.",
         ],
@@ -57,13 +57,13 @@ export const intro = {
       id: "confidence",
       title: "Build your confidence",
       description:
-        "Everyone has insecurities, but **confident people** don't show them. Fake it until you make it. Expect the first hundred attempts to feel awkward, then it will get easier.",
+        "Everyone has insecurities, but confident people don't show them. **Fake it until you make it.** Expect the first hundred attempts to feel awkward, then it will get easier.",
       extra: {
         title: "Tips",
         description: [
-          "Maintain eye contact, without staring. Looking away shows insecurity.",
-          "Slow down physically. Relaxed posture, shoulders back, chin up.",
-          "Stay calm. Don't show hesitation or anxiety.",
+          "Maintain **eye contact**, without staring. Looking away shows insecurity.",
+          "Stay calm. **Slow down**. Relaxed posture, shoulders back, chin up.",
+          "Don't show hesitation or anxiety.",
           "Never use self-deprecating jokes.",
           "Ignore charisma gurus.",
         ],
@@ -82,9 +82,8 @@ export const intro = {
       extra: {
         title: "Tips",
         description: [
-          'Say "please" and "thank you".',
-          "Be a little vague, make them want to ask.",
-          "Calibrate your jokes. No online memes.",
+          `Say "please" and "thank you".`,
+          "Calibrate your jokes and avoid internet culture.",
           "Give unexpected or exaggerated answers to casual questions.",
         ],
       },
@@ -105,7 +104,7 @@ export const intro = {
 
       Playful.
 
-      If you followed the previous advice, **that's you**. And that alone puts you ahead of half the population.
+      If you followed the steps, those words describe **you**. And that alone puts you ahead of half the population.
 
       You're ready to give it your best.
       `,
