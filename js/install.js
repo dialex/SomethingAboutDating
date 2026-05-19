@@ -19,8 +19,6 @@ export function setupInstallBanner() {
   const modal    = document.getElementById("install-modal");
   const modalClose = document.getElementById("btn-modal-close");
 
-  let deferredPrompt = null;
-
   banner.style.display = "flex";
 
   function dismissBanner() {
@@ -40,15 +38,7 @@ export function setupInstallBanner() {
 
   banner.addEventListener("click", (e) => {
     if (dismiss.contains(e.target)) return;
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        deferredPrompt = null;
-        dismissBanner();
-      });
-    } else {
-      openModal();
-    }
+    openModal();
   });
 
   dismiss.addEventListener("click", (e) => {
@@ -58,11 +48,6 @@ export function setupInstallBanner() {
 
   modal.addEventListener("click", closeModal);
   modalClose.addEventListener("click", () => modal.classList.add("hidden"));
-
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-  });
 
   window.addEventListener("appinstalled", dismissBanner);
 }
