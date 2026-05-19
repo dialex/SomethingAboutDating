@@ -41,12 +41,44 @@ test.describe("Button navigation", () => {
   });
 
   test("last step next button returns to home", async ({ page }) => {
-    // meeting has 4 steps; jump to last
-    await page.goto("/#meeting/4");
+    // meeting has 8 steps; jump to last
+    await page.goto("/#meeting/8");
     await page.locator(".wizard-step-card:not(.peek)").waitFor();
-    await expect(page.locator(".wizard-step-badge")).toContainText("Step 4 of 4");
+    await expect(page.locator(".wizard-step-badge")).toContainText("Step 8 of 8");
     await page.locator("#btn-next").click();
     await page.locator(".section-grid").waitFor();
     await expect(page).toHaveURL(/\/#?$|\/$/);
+  });
+});
+
+test.describe("Browser back gesture", () => {
+  test("back from a wizard step goes to the previous step, not previous URL", async ({ page }) => {
+    // Visit two unrelated phase steps so browser history has multiple entries.
+    await page.goto("/#intro/1");
+    await page.locator(".wizard-step-card:not(.peek)").waitFor();
+    await page.goto("/#meeting/3");
+    await expect(page.locator(".wizard-step-badge")).toContainText("Step 3 of 8");
+    // System back should step *within* the current wizard, not jump back to
+    // the previously-visited URL (#intro/1).
+    await page.goBack();
+    await expect(page.locator(".wizard-step-badge")).toContainText("Step 2 of 8");
+    await page.goBack();
+    await expect(page.locator(".wizard-step-badge")).toContainText("Step 1 of 8");
+  });
+
+  test("back from step 1 returns home", async ({ page }) => {
+    await page.goto("/#meeting/1");
+    await page.locator(".wizard-step-card:not(.peek)").waitFor();
+    await page.goBack();
+    await page.locator(".section-grid").waitFor();
+    await expect(page).toHaveURL(/\/#?$|\/$/);
+  });
+
+  test("back from credits returns home", async ({ page }) => {
+    await page.goto("/");
+    await page.locator(".btn-credits").click();
+    await page.locator(".credits-content, .credits, h2").first().waitFor().catch(() => {});
+    await page.goBack();
+    await page.locator(".section-grid").waitFor();
   });
 });

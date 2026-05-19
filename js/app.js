@@ -6,8 +6,8 @@ import { renderMarkdown, renderInlineMarkdown } from "./markdown.js";
 let view = "home";
 let currentSectionId = null;
 let currentStep = 0;
-let ignoreHashChange = false;
 let appVersion = "";
+let inPopState = false;
 
 const $ = (id) => document.getElementById(id);
 const elFooter      = () => document.querySelector("footer");
@@ -31,6 +31,14 @@ function renderHome() {
   const home = tpl("tpl-home");
   const grid = home.querySelector('[data-slot="grid"]');
   home.querySelector('[data-slot="version"]').textContent = appVersion ? "v" + appVersion : "";
+
+  const creditsLink = home.querySelector(".btn-credits");
+  if (creditsLink) {
+    creditsLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      goCredits();
+    });
+  }
 
   sections.forEach(s => {
     const node = tpl("tpl-section-card");
@@ -181,6 +189,13 @@ function render() {
 }
 
 // --- Hash routing ---
+//
+// Every navigable state (home, credits, each wizard step) is a real history
+// entry. Forward navigation (Next, enter section, credits) pushes; backward
+// navigation (X button, swipe-back, system back) calls history.back() and
+// lets popstate sync state from the URL that comes back into view.
+// applyHash seeds the full step ladder on cold-load so a deep link can be
+// walked back step by step.
 
 function hashForState() {
   if (view === "home") return "";
@@ -188,50 +203,146 @@ function hashForState() {
   return `${currentSectionId}/${currentStep + 1}`;
 }
 
-function applyState() {
-  render();
-  window.scrollTo(0, 0);
+function urlForState() {
   const h = hashForState();
-  ignoreHashChange = true;
-  location.hash = h;
+  return h ? "#" + h : location.pathname + location.search;
 }
 
-function applyHash() {
+function pushUrl() {
+  history.pushState(
+    { view, currentSectionId, currentStep },
+    "",
+    urlForState(),
+  );
+}
+
+function replaceUrl() {
+  history.replaceState(
+    { view, currentSectionId, currentStep },
+    "",
+    urlForState(),
+  );
+}
+
+function readHashIntoState() {
   const hash = location.hash.slice(1);
   if (!hash) {
     view = "home";
     currentSectionId = null;
     currentStep = 0;
-  } else if (hash === "credits") {
+    return;
+  }
+  if (hash === "credits") {
     view = "credits";
     currentSectionId = null;
     currentStep = 0;
-  } else {
-    const [sectionId, stepPart] = hash.split("/");
-    const section = sections.find(s => s.id === sectionId);
-    if (!section) {
-      view = "home";
-      currentSectionId = null;
-      currentStep = 0;
-    } else {
-      view = "section";
-      currentSectionId = sectionId;
-      const n = parseInt(stepPart, 10);
-      const max = section.steps ? section.steps.length - 1 : 0;
-      currentStep = isNaN(n) ? 0 : Math.max(0, Math.min(n - 1, max));
-    }
-  }
-  render();
-  window.scrollTo(0, 0);
-}
-
-window.addEventListener("hashchange", () => {
-  if (ignoreHashChange) {
-    ignoreHashChange = false;
     return;
   }
-  applyHash();
+  const [sectionId, stepPart] = hash.split("/");
+  const section = sections.find(s => s.id === sectionId);
+  if (!section) {
+    view = "home";
+    currentSectionId = null;
+    currentStep = 0;
+    return;
+  }
+  view = "section";
+  currentSectionId = sectionId;
+  const n = parseInt(stepPart, 10);
+  const max = section.steps ? section.steps.length - 1 : 0;
+  currentStep = isNaN(n) ? 0 : Math.max(0, Math.min(n - 1, max));
+}
+
+// Initial route. After parsing the hash, seed a home anchor at the current
+// cursor and then push every intermediate state entry up to the target.
+// Result: browser back walks step → step → home naturally, even when the
+// user landed via a bookmark or shared link.
+function applyHash() {
+  readHashIntoState();
+  render();
+  window.scrollTo(0, 0);
+
+  if (view === "home") {
+    replaceUrl();
+    return;
+  }
+
+  const targetView = view;
+  const targetSectionId = currentSectionId;
+  const targetStep = currentStep;
+
+  history.replaceState({ view: "home" }, "", location.pathname + location.search);
+
+  if (targetView === "credits") {
+    view = "credits"; currentSectionId = null; currentStep = 0;
+    pushUrl();
+    return;
+  }
+
+  for (let i = 0; i <= targetStep; i++) {
+    view = "section";
+    currentSectionId = targetSectionId;
+    currentStep = i;
+    pushUrl();
+  }
+}
+
+// External hash change (address bar, in-page anchor that escaped our
+// interceptors) that did NOT also fire popstate (rare on modern browsers,
+// but kept as a fallback). popstate above handles the common case.
+window.addEventListener("hashchange", () => {
+  if (inPopState) return;
+  if (location.hash.slice(1) === hashForState()) return;
+  readHashIntoState();
+  render();
+  window.scrollTo(0, 0);
+  if (view === "section" && currentStep > 0) seedStepLadder();
 });
+
+// Back gesture (Android system back, browser back, swipe-back) → step back
+// in the wizard. Mirrors the X button: prev step, or home if on step 1.
+// We only intercept when popstate landed on the home anchor (empty hash) —
+// any other popstate means the URL was changed externally (address bar,
+// test-driven navigation) and hashchange will handle it.
+//
+// After the pop, the cursor sits on the home-anchor entry. We must NOT
+// replaceState here — that would overwrite the anchor and break the next
+// back gesture. Instead, mutate state directly, render, then pushState the
+// new wizard state on top so the trap is preserved.
+// popstate fires for every back/forward. UI back-buttons also route here
+// via history.back(). The URL is the source of truth — read it, sync state.
+// If the entry lacks our state marker (external navigation via address bar
+// or test framework) and lands mid-wizard, seed the missing step entries so
+// the back gesture can still walk step by step.
+window.addEventListener("popstate", (e) => {
+  if (inPopState) return;
+  inPopState = true;
+  try {
+    readHashIntoState();
+    render();
+    window.scrollTo(0, 0);
+    const ours = e.state && typeof e.state.view === "string";
+    if (!ours && view === "section" && currentStep > 0) {
+      seedStepLadder();
+    }
+  } finally {
+    inPopState = false;
+  }
+});
+
+// Rewrite the current entry as section step 0, then push entries up to the
+// current step. Called after detecting an external deep-link into a wizard.
+function seedStepLadder() {
+  const sectionId = currentSectionId;
+  const targetStep = currentStep;
+  currentStep = 0;
+  replaceUrl();
+  for (let i = 1; i <= targetStep; i++) {
+    currentStep = i;
+    pushUrl();
+  }
+  currentSectionId = sectionId;
+}
 
 // --- Navigation ---
 
@@ -239,30 +350,49 @@ function enterSection(id) {
   view = "section";
   currentSectionId = id;
   currentStep = 0;
-  applyState();
+  render();
+  window.scrollTo(0, 0);
+  pushUrl();
 }
 
-export function navigate(dir) {
-  const section = sections.find(s => s.id === currentSectionId);
-  if (!section || !section.steps) return;
-  const total = section.steps.length;
-  if (dir === 1 && currentStep >= total - 1) {
-    goHome();
-    return;
-  }
-  if (dir === -1 && currentStep === 0) {
-    goHome();
-    return;
-  }
-  currentStep += dir;
-  applyState();
+function goCredits() {
+  view = "credits";
+  currentSectionId = null;
+  currentStep = 0;
+  render();
+  window.scrollTo(0, 0);
+  pushUrl();
 }
 
 function goHome() {
   view = "home";
   currentSectionId = null;
   currentStep = 0;
-  applyState();
+  render();
+  window.scrollTo(0, 0);
+  pushUrl();
+}
+
+// Forward = push a new step entry. Backward = history.back(), which fires
+// popstate and lets that handler sync state from the URL. This way X
+// button, swipe-back, and system back all converge on the same code path.
+export function navigate(dir) {
+  const section = sections.find(s => s.id === currentSectionId);
+  if (!section || !section.steps) return;
+
+  if (dir < 0) {
+    history.back();
+    return;
+  }
+
+  if (currentStep >= section.steps.length - 1) {
+    goHome();
+    return;
+  }
+  currentStep += 1;
+  render();
+  window.scrollTo(0, 0);
+  pushUrl();
 }
 
 // --- Swipe + animated transition ---
