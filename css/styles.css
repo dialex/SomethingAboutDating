@@ -112,12 +112,6 @@ body.wizard main {
   color: var(--text-primary);
 }
 
-.wizard-phase-subtitle {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
 .wizard-step-badge {
   align-self: flex-start;
   font-family: 'Nunito', sans-serif;

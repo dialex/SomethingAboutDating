@@ -29,7 +29,6 @@ function renderHome() {
   main.classList.add("home-view");
 
   const home = tpl("tpl-home");
-  const grid = home.querySelector('[data-slot="grid"]');
   home.querySelector('[data-slot="version"]').textContent = appVersion ? "v" + appVersion : "";
 
   const creditsLink = home.querySelector(".btn-credits");
@@ -40,23 +39,21 @@ function renderHome() {
     });
   }
 
-  sections.forEach(s => {
-    const node = tpl("tpl-section-card");
-    const card = node.querySelector('[data-slot="card"]');
-    card.id = `section-${s.id}`;
-    const image = node.querySelector('[data-slot="image"]');
-    image.style.setProperty("--c1", s.color[0]);
-    image.style.setProperty("--c2", s.color[1]);
-    const photo = node.querySelector('[data-slot="photo"]');
-    if (s.cover) {
-      photo.src = s.cover;
-      photo.hidden = false;
+  // Cards are declared statically in tpl-home (titles + images hardcoded).
+  // Here we just wire each one to its phase data: gradient, steps count, click.
+  home.querySelectorAll(".section-card").forEach(card => {
+    const id = card.dataset.section;
+    const s = sections.find(x => x.id === id);
+    if (!s) return;
+    card.id = `section-${id}`;
+    const image = card.querySelector('[data-slot="image"]');
+    if (image) {
+      image.style.setProperty("--c1", s.color[0]);
+      image.style.setProperty("--c2", s.color[1]);
     }
-    node.querySelector('[data-slot="title"]').textContent = s.title;
-    node.querySelector('[data-slot="steps"]').textContent =
-      s.steps ? `${s.steps.length} steps` : "Coming soon";
-    card.addEventListener("click", () => enterSection(s.id));
-    grid.appendChild(node);
+    const steps = card.querySelector('[data-slot="steps"]');
+    if (steps) steps.textContent = s.steps ? `${s.steps.length} steps` : "Coming soon";
+    card.addEventListener("click", () => enterSection(id));
   });
 
   // Snapshot the install banner before replaceChildren detaches it — once
@@ -96,7 +93,6 @@ function renderSection() {
 
   const node = tpl("tpl-wizard-step");
   node.querySelector('[data-slot="phase-title"]').textContent = section.title;
-  node.querySelector('[data-slot="phase-subtitle"]').textContent = section.subtitle || "";
 
   // Step badge
   const badge = node.querySelector('[data-slot="step-badge"]');

@@ -54,7 +54,48 @@
 
   <!-- View templates (cloned and populated by js/app.js) -->
   <template id="tpl-home">
-    <div class="section-grid" data-slot="grid"></div>
+    <div class="section-grid">
+      <div class="section-card" data-section="intro">
+        <div class="section-card-image" data-slot="image">
+          <img class="section-card-photo" src="images/intro.jpg" alt="" />
+          <div class="section-card-title">Intro</div>
+        </div>
+        <div class="section-card-footer">
+          <span data-slot="steps"></span>
+          <span class="section-card-cta">Start <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+      </div>
+      <div class="section-card" data-section="meeting">
+        <div class="section-card-image" data-slot="image">
+          <img class="section-card-photo" src="images/meeting.jpg" alt="" />
+          <div class="section-card-title">Meeting</div>
+        </div>
+        <div class="section-card-footer">
+          <span data-slot="steps"></span>
+          <span class="section-card-cta">Start <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+      </div>
+      <div class="section-card" data-section="dating">
+        <div class="section-card-image" data-slot="image">
+          <img class="section-card-photo" src="images/dating.jpg" alt="" />
+          <div class="section-card-title">Dating</div>
+        </div>
+        <div class="section-card-footer">
+          <span data-slot="steps"></span>
+          <span class="section-card-cta">Start <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+      </div>
+      <div class="section-card" data-section="keeping">
+        <div class="section-card-image" data-slot="image">
+          <img class="section-card-photo" src="images/keeping.jpg" alt="" />
+          <div class="section-card-title">Keeping</div>
+        </div>
+        <div class="section-card-footer">
+          <span data-slot="steps"></span>
+          <span class="section-card-cta">Start <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+      </div>
+    </div>
     <p class="home-footer-msg">Take your time with each phase. Great relationships are built step by step.</p>
     <div class="home-meta">
       <a href="#credits" class="btn-credits">Credits</a>
@@ -62,24 +103,10 @@
     </div>
   </template>
 
-  <template id="tpl-section-card">
-    <div class="section-card" data-slot="card">
-      <div class="section-card-image" data-slot="image">
-        <img class="section-card-photo" data-slot="photo" alt="" hidden />
-        <div class="section-card-title" data-slot="title"></div>
-      </div>
-      <div class="section-card-footer">
-        <span data-slot="steps"></span>
-        <span class="section-card-cta">Start <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
-      </div>
-    </div>
-  </template>
-
   <template id="tpl-wizard-step">
     <section class="wizard">
       <div class="wizard-phase-header">
         <h1 class="wizard-phase-title" data-slot="phase-title"></h1>
-        <p class="wizard-phase-subtitle" data-slot="phase-subtitle"></p>
       </div>
       <div class="wizard-step-badge" data-slot="step-badge"></div>
       <div class="wizard-stack" data-slot="stack">

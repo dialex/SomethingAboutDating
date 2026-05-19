@@ -1,7 +1,6 @@
 export const keeping = {
   id: "keeping",
   title: "Keeping",
-  subtitle: "TODO#4",
   color: ["#34d399", "#2dd4bf"],
   cover: "images/keeping.jpg",
   steps: [
