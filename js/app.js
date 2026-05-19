@@ -541,8 +541,24 @@ fetch("manifest.json")
   .catch(() => {});
 
 if ("serviceWorker" in navigator) {
+  // Only reload if a controller was already active before this page load.
+  // That means a NEW service worker took over an existing client — i.e. a
+  // version upgrade. The first-ever install also fires controllerchange,
+  // but with no prior controller, so we skip the reload there.
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloading = false;
+  if (hadController) {
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (reloading) return;
+      reloading = true;
+      window.location.reload();
+    });
+  }
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js").catch(() => {});
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then((reg) => reg.update().catch(() => {}))
+      .catch(() => {});
   });
 }
 
